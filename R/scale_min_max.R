@@ -20,6 +20,7 @@
 #'  Care should be taken when using \code{skip = TRUE} as it may affect
 #'  the computations for subsequent operations.
 #' @param x A \code{step_scale_min_max} object.
+#'
 #' @return An updated version of \code{recipe} with the new step
 #'  added to the sequence of existing steps (if any). For the
 #'  \code{tidy} method, a tibble with columns \code{terms} (the
@@ -27,8 +28,11 @@
 #'  standard deviations).
 #'
 #' @keywords datagen
+#'
 #' @concept preprocessing normalization_methods
+#'
 #' @export
+#'
 #' @details Scaling based on min and max is defined as: \deqn{(x - min(x)) / (max(x) - min(x))}
 #'  The calculation is performed in \code{bake.recipe}.
 #'
@@ -123,7 +127,9 @@ print.step_scale_min_max <-
     invisible(x)
   }
 
+
 #' @rdname step_scale_min_max
+#' @param x A \code{step_scale_min_max} object.
 tidy.step_scale_min_max <- function(x, ...) {
   if (is_trained(x)) {
     res <- tibble(terms = x$columns)

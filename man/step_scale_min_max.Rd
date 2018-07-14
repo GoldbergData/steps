@@ -33,6 +33,8 @@ the computations for subsequent operations.}
 preprocessing have been estimated.}
 
 \item{x}{A \code{step_scale_min_max} object.}
+
+\item{x}{A \code{step_scale_min_max} object.}
 }
 \value{
 An updated version of \code{recipe} with the new step
