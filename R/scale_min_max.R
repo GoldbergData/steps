@@ -3,13 +3,23 @@
 #' \code{step_scale_min_max} creates a \emph{specification} of a recipe
 #'  step that will normalize numeric data between 0 and 1.
 #'
+#' @param recipe A recipe object. The step will be added to the
+#'  sequence of operations for this recipe.
 #' @param ... One or more selector functions to choose which
 #'  variables are affected by the step. See [selections()]
 #'  for more details. For the \code{tidy} method, these are not
 #'  currently used.
 #' @param role Not used by this step since no new variables are
 #'  created.
-#'
+#' @param trained A logical to indicate if the quantities for
+#'  preprocessing have been estimated.
+#' @param skip A logical. Should the step be skipped when the
+#'  recipe is baked by \code{\link[=bake.recipe]{bake.recipe()}} While all operations are baked
+#'  when \code{\link[=prep.recipe]{prep.recipe()}} is run, some operations may not be able to be
+#'  conducted on new data (e.g. processing the outcome variable(s)).
+#'  Care should be taken when using \code{skip = TRUE} as it may affect
+#'  the computations for subsequent operations.
+#' @param x A \code{step_scale_min_max} object.
 #' @return An updated version of \code{recipe} with the new step
 #'  added to the sequence of existing steps (if any). For the
 #'  \code{tidy} method, a tibble with columns \code{terms} (the
@@ -17,11 +27,8 @@
 #'  standard deviations).
 #'
 #' @keywords datagen
-#'
 #' @concept preprocessing normalization_methods
-#'
 #' @export
-#'
 #' @details Scaling based on min and max is defined as: \deqn{(x - min(x)) / (max(x) - min(x))}
 #'  The calculation is performed in \code{bake.recipe}.
 #'
@@ -117,7 +124,6 @@ print.step_scale_min_max <-
   }
 
 #' @rdname step_scale_min_max
-#' @param x A `step_scale_min_max` object.
 tidy.step_scale_min_max <- function(x, ...) {
   if (is_trained(x)) {
     res <- tibble(terms = x$columns)
