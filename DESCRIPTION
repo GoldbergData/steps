@@ -1,0 +1,12 @@
+Imports:
+	recipes
+Package: steps
+Title: Auxilary steps for the recipes package (one line, title case)
+Version: 0.0.0.9000
+Authors@R: person("Josh", "Goldberg", email = "josh.goldberg1@outlook.com", role = c("aut", "cre"))
+Description: I created these steps to supplement what is already provided in the recipes package. (one paragraph).
+Depends: R (>= 3.5.1)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000
