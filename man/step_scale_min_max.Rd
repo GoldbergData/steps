@@ -8,7 +8,7 @@
 step_scale_min_max(recipe, ..., role = NA, skip = FALSE,
   trained = FALSE, columns = NULL)
 
-tidy.step_scale_min_max(x, ...)
+\method{tidy}{step_scale_min_max}(x, ...)
 }
 \arguments{
 \item{recipe}{A recipe object. The step will be added to the
